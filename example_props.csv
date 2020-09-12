@@ -1,0 +1,4 @@
+arg,values,min,max,step
+arg1,"value1,value2",,,
+arg2,"Africa,Australia,Eurasia",,,
+numbers,,50,200,50
