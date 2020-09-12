@@ -25,7 +25,7 @@ def getlines(filename):
         return [s.strip() for s in f.readlines()]
 
 
-def choose_main(args):
+def choose_main():
     layout = [[sg.Text('Params file')],
               [sg.Input(key='-FILE-', visible=False, enable_events=True), sg.FileBrowse()]]
     event, values = sg.Window('File Compare', layout).read(close=True)
@@ -148,8 +148,7 @@ def _iterate(results, keys, grid, props):
     return results
 
 
-def mainwin(args):
-    pfile = args[0]
+def mainwin(pfile):
     # def mainwin(pfile):
     layout = []
     with open(pfile, "r") as f:
@@ -252,4 +251,4 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         choose_main()
     else:
-        mainwin(sys.argv[1:])
+        mainwin(sys.argv[1])
