@@ -131,7 +131,7 @@ def generate_scripts(values):
                     line = line.replace("{" + k + "}", str(v))
                 f.write(line)
             if next_job_id is not None:
-                f.write(f"\nsbatch {next_job_id}_job.sh\n")
+                f.write(f"\nsbatch {output_dir}/{next_job_id}_job.sh\n")
     exp_df.to_csv(experiments)
     sg.Print("\n".join(firstjobs))
 
