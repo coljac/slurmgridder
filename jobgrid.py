@@ -127,6 +127,8 @@ def generate_scripts(values):
                     line = line.replace("{jobid}", script_id)
                 if "{props}" in line:
                     line = line.replace("{props}", prop_string)
+                for k, v in results[idx].items():
+                    line = line.replace("{" + k + "}", str(v))
                 f.write(line)
             if next_job_id is not None:
                 f.write(f"\nsbatch {next_job_id}_job.sh\n")
