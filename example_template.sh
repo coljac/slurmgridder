@@ -6,5 +6,5 @@
 #SBATCH --time=16:00:00
 #SBATCH --mem=30G
 
-python program.py {props}
+python program.py {props} --this_thing {arg1}_name.txt
 

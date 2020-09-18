@@ -133,6 +133,10 @@ def generate_scripts(values):
             if next_job_id is not None:
                 f.write(f"\nsbatch {output_dir}/{next_job_id}_job.sh\n")
     exp_df.to_csv(experiments)
+    if values['-SUBMIT-']:
+        for job in firstjobs:
+            os.system(job)
+
     sg.Print("\n".join(firstjobs))
 
 def _iterate(results, keys, grid, props):
@@ -174,6 +178,9 @@ def mainwin(pfile):
         sg.CBox("", default=False, key="-LIMIT-"),
         sg.Text("Limit to concurrent jobs:"),
         sg.Slider(range=(0, 30), key='-JOBS_SLIDER-', default_value=5, orientation="h")
+    ])
+    layout.append([
+        sg.CBox("Submit jobs", default=False, key="-SUBMIT-"),
     ])
 
     layout.append([sg.Text("", font=rule)])
